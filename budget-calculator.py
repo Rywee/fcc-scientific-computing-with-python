@@ -38,7 +38,6 @@ class Category:
         return output
 
 def create_spend_chart(categories):
-    #Get the data
     withdrawls = list()
     for items in categories:
         total = abs(sum(values["amount"] for values in items.ledger if values["amount"] < 0))
@@ -50,7 +49,6 @@ def create_spend_chart(categories):
     for items in range(0, len(categories)):
         data[categories[items].name] = percents[items]
 
-    #Generate the graph
     output = "Percentage spent by category\n"
     for i in range(100, -1, -10):
         output += "{:>3}|".format(i)
@@ -61,7 +59,6 @@ def create_spend_chart(categories):
 
     output += "    {dash}\n".format(dash = "-" * len(data) * 3)
 
-    #Print the labels
     data_names = data.keys()
     max_len = max(len(ele) for ele in data_names)
 
